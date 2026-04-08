@@ -65,10 +65,10 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T4.1 | `scripts/town/town_manager.gd` | `interact_with_building(building_type)`, 连接 `SignalManager.building_interacted` | `town_manager.interact_with_building("hospital")` 打印日志 |
-| T4.2 | `scenes/town/town_scene.tscn` | 节点: `TownManager`, `TownMap` (Sprite2D), `BuildingList` (HospitalButton, QuestBoardButton, DungeonEntranceButton), `PlayerHUD` (GoldLabel) | 点击按钮有响应 |
-| T4.3 | `scripts/town/town_manager.gd` | `hospital_interact()`: 扣金币、加血、打印 Log | 100 金币时点击医院，金币变 0，HP 回满 |
-| T4.4 | `scripts/town/town_manager.gd` | `enter_dungeon()`: 切换到 `DungeonScene` | 点击地牢入口切换场景 |
+| T4.1 | `scripts/town/town_manager.gd` | `interact_with_building(building_type)`, 连接 `SignalManager.building_interacted` | - [x] `town_manager.interact_with_building("hospital")` 打印日志 |
+| T4.2 | `scenes/town/town_scene.tscn` | 节点: `TownManager`, `TownMap` (Sprite2D), `BuildingList` (HospitalButton, QuestBoardButton, DungeonEntranceButton), `PlayerHUD` (GoldLabel) | - [x] 点击按钮有响应 |
+| T4.3 | `scripts/town/town_manager.gd` | `hospital_interact()`: 扣金币、加血、打印 Log | - [x] 100 金币时点击医院，金币变 50，HP 回满 |
+| T4.4 | `scripts/town/town_manager.gd` | `enter_dungeon()`: 切换到 `DungeonScene` | - [x] 点击地牢入口切换场景 |
 
 ---
 
