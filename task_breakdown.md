@@ -40,12 +40,12 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T2.1 | `scripts/battle/effect.gd` | `EffectType` enum: `DAMAGE`, `DAMAGE_BUFF`, `HEAL`, `DEBUFF`; `Effect` class: `type`, `base_value`, `multiplier`, `condition` | 其他脚本可引用 `Effect` 类 |
-| T2.2 | `scripts/battle/skill_card.gd` | `SkillCard` extends Resource: `id`, `name`, `icon_path`, `is_ultimate`, `max_uses`, `target_type`, `target_position`, `effects`, `skill_weights`; **注意**: `max_uses` 是模板值，**运行时 uses 在 BattleSystem 的 `runtime_skill_uses` Dictionary 中独立维护** | 能在编辑器创建 `skill_*.tres` |
-| T2.3 | `scripts/battle/battle_logic.gd` | signals: `damage_dealt`, `character_died`, `battle_ended`; `calculate_damage()`, `apply_damage()`, `get_turn_order()` 含速度平局随机 | 单元测试: `calculate_damage(20, 10, 1.5)` 返回正数 |
-| T2.4 | `scripts/battle/monster_ai.gd` | `choose_skill(monster, available_skills)`: 血量<30%优先保命，否则按权重随机 | 多次调用，低血量时保命技能选中率 >50% |
-| T2.5 | `scripts/battle/position_system.gd` | `check_position_validity()` (判断技能对当前站位是否合法), `apply_death_and_fill()` (只修改 `current_slot_index`，不修改数组顺序), `rearrange_positions()` (UI 层根据 `current_slot_index` 更新显示) | 单元测试: 前排死亡后后排单位位置索引变化 |
-| T2.6 | `scripts/battle/battle_logic.gd` | **防御公式常量定义**: `DEFENSE_REDUCTION_RATIO = 0.5`; `calculate_damage()` 使用常量计算 `final_damage = max(1, base_damage * multiplier - defender.defense * DEFENSE_REDUCTION_RATIO)` | 单元测试: `calculate_damage(20, 10, 1.5)` 返回正数 |
+| T2.1 | `scripts/battle/effect.gd` | `EffectType` enum: `DAMAGE`, `DAMAGE_BUFF`, `HEAL`, `DEBUFF`; `Effect` class: `type`, `base_value`, `multiplier`, `condition` | - [x] 其他脚本可引用 `Effect` 类 |
+| T2.2 | `scripts/battle/skill_card.gd` | `SkillCard` extends Resource: `id`, `name`, `icon_path`, `is_ultimate`, `max_uses`, `target_type`, `target_position`, `effects`, `skill_weights`; **注意**: `max_uses` 是模板值，**运行时 uses 在 BattleSystem 的 `runtime_skill_uses` Dictionary 中独立维护** | - [x] 能在编辑器创建 `skill_*.tres` |
+| T2.3 | `scripts/battle/battle_logic.gd` | signals: `damage_dealt`, `character_died`, `battle_ended`; `calculate_damage()`, `apply_damage()`, `get_turn_order()` 含速度平局随机 | - [x] 单元测试: `calculate_damage(20, 10, 1.5)` 返回正数 |
+| T2.4 | `scripts/battle/monster_ai.gd` | `choose_skill(monster, available_skills)`: 血量<30%优先保命，否则按权重随机 | - [x] 多次调用，低血量时保命技能选中率 >50% |
+| T2.5 | `scripts/battle/position_system.gd` | `check_position_validity()` (判断技能对当前站位是否合法), `apply_death_and_fill()` (只修改 `current_slot_index`，不修改数组顺序), `rearrange_positions()` (UI 层根据 `current_slot_index` 更新显示) | - [x] 单元测试: 前排死亡后后排单位位置索引变化 |
+| T2.6 | `scripts/battle/battle_logic.gd` | **防御公式常量定义**: `DEFENSE_REDUCTION_RATIO = 0.5`; `calculate_damage()` 使用常量计算 `final_damage = max(1, base_damage * multiplier - defender.defense * DEFENSE_REDUCTION_RATIO)` | - [x] 单元测试: `calculate_damage(20, 10, 1.5)` 返回正数 |
 
 ---
 
