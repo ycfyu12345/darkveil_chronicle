@@ -76,9 +76,9 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T5.1 | `scripts/dungeon/dungeon_manager.gd` | `current_room_index`, `advance_room()`, `spawn_monsters(room_index)`; **怪物配置存储在 DungeonManager 内部，不跨场景传递** | `advance_room()` 后 `current_room_index` 增加 |
-| T5.2 | `scenes/dungeon/dungeon_scene.tscn` | 节点: `DungeonManager`, `RoomView` (Sprite2D), `ExplorationUI` (ProgressLabel, AdvanceButton, RetreatButton) | 场景可加载 |
-| T5.3 | `scripts/dungeon/dungeon_manager.gd` | `start_battle()`: **先设置 `GameManager.current_battle_setup`** (包含 monster_data 数组)，再调用 `change_scene("res://scenes/battle/battle_scene.tscn")` | 遇到怪物时能进入战斗场景，BattleScene 加载后正确显示怪物 |
+| T5.1 | `scripts/dungeon/dungeon_manager.gd` | `current_room_index`, `advance_room()`, `spawn_monsters(room_index)`; **怪物配置存储在 DungeonManager 内部，不跨场景传递** | - [x] `advance_room()` 后 `current_room_index` 增加 |
+| T5.2 | `scenes/dungeon/dungeon_scene.tscn` | 节点: `DungeonManager`, `RoomView` (Sprite2D), `ExplorationUI` (ProgressLabel, AdvanceButton, RetreatButton) | - [x] 场景可加载 |
+| T5.3 | `scripts/dungeon/dungeon_manager.gd` | `start_battle()`: **先设置 `GameManager.current_battle_setup`** (包含 monster_data 数组)，再调用 `change_scene("res://scenes/battle/battle_scene.tscn")` | - [x] 遇到怪物时能进入战斗场景，BattleScene 加载后正确显示怪物 |
 
 ---
 
