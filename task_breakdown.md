@@ -53,11 +53,11 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T3.1 | `scripts/battle/battle_state_machine.gd` | `BattleState` enum: `INIT`, `PLAYER_INPUT`, `ACTION_QUEUE`, `EXECUTION`, `DEATH_CHECK`, `TURN_END`, `BATTLE_OVER`; **`DAMAGE_CALC 合并到 EXECUTION`**；`transition_to()`, `get_valid_transitions()` | `INIT→PLAYER_INPUT` 合法，`INIT→EXECUTION` 不合法 |
-| T3.2 | `scripts/battle/battle_system.gd` | 持有 `BattleLogic`, `BattleStateMachine`, `MonsterAI`; 管理 `player_units`, `enemy_units`, `action_queue`, `runtime_skill_uses`; **数据获取**: `_ready()` 时主动从 `GameManager.current_battle_setup` 拉取队伍和怪物数据; EXECUTION 状态使用 `await` 等待动画，动画结束后计算伤害 | 控制台打印完整战斗流程日志 |
-| T3.3 | `scenes/battle/battle_scene.tscn` | 节点: `BattleSystem`, `BattleUI` (TeamPanel, EnemyPanel, CardHand, ActionQueue, CommandPanel), `BattleLog`, `TurnManager` | 场景存在，节点结构正确 |
-| T3.4 | `scenes/battle/` | 灰盒 UI 占位符: 白底黑字 `TextureRect` 显示角色名、HP，按钮可点击 |
-| T3.5 | `scripts/battle/battle_system.gd` / UI 层 | **技能可用性验证**: 在 `PLAYER_INPUT` 状态时，遍历当前角色技能调用 `BattleLogic.check_position_validity()`，**UI 层根据结果禁用非法技能按钮**（灰显），从源头杜绝误触 | 能看到所有 UI 元素，布局不乱；选择技能时，非法技能按钮不可点击 |
+| T3.1 | `scripts/battle/battle_state_machine.gd` | `BattleState` enum: `INIT`, `PLAYER_INPUT`, `ACTION_QUEUE`, `EXECUTION`, `DEATH_CHECK`, `TURN_END`, `BATTLE_OVER`; **`DAMAGE_CALC 合并到 EXECUTION`**；`transition_to()`, `get_valid_transitions()` | - [x] `INIT→PLAYER_INPUT` 合法，`INIT→EXECUTION` 不合法 |
+| T3.2 | `scripts/battle/battle_system.gd` | 持有 `BattleLogic`, `BattleStateMachine`, `MonsterAI`; 管理 `player_units`, `enemy_units`, `action_queue`, `runtime_skill_uses`; **数据获取**: `_ready()` 时主动从 `GameManager.current_battle_setup` 拉取队伍和怪物数据; EXECUTION 状态使用 `await` 等待动画，动画结束后计算伤害 | - [x] 控制台打印完整战斗流程日志 |
+| T3.3 | `scenes/battle/battle_scene.tscn` | 节点: `BattleSystem`, `BattleUI` (TeamPanel, EnemyPanel, CardHand, ActionQueue, CommandPanel), `BattleLog`, `TurnManager` | - [x] 场景存在，节点结构正确 |
+| T3.4 | `scenes/battle/` | 灰盒 UI 占位符: 白底黑字 `TextureRect` 显示角色名、HP，按钮可点击 | - [x] 能看到所有 UI 元素，布局不乱 |
+| T3.5 | `scripts/battle/battle_system.gd` / UI 层 | **技能可用性验证**: 在 `PLAYER_INPUT` 状态时，遍历当前角色技能调用 `BattleLogic.check_position_validity()`，**UI 层根据结果禁用非法技能按钮**（灰显），从源头杜绝误触 | - [x] 选择技能时，非法技能按钮不可点击 |
 
 ---
 
