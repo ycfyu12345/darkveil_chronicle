@@ -25,14 +25,14 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T1.1 | `autoload/game_manager.gd` | 游戏状态 `game_state`，场景切换 `change_scene()`，金币 `gold`，队伍 `party`，**`current_battle_setup` (战斗上下文，供 BattleSystem 拉取)** | `Engine.get_singleton("GameManager")` 可获取实例 |
-| T1.2 | `autoload/signal_manager.gd` | 全局跨系统信号: `battle_won`, `battle_lost`, `gold_changed`, `building_interacted`; **注意**: `health_changed` 等高频、仅战斗 UI 关心的信号**放在 BattleSystem 节点上**，不由 SignalManager 转发 | 其他脚本可连接这些信号 |
-| T1.3 | `autoload/debug_manager.gd` | F1=跳转战斗, F2=满血, F3=+1000金 | 调试模式下按 F1-F3 有响应 |
-| T1.4 | `autoload/effects_manager.gd` | `screen_shake(intensity, duration)`, `show_damage_number(value, position, is_critical)` | 方法可被调用（可以是空实现） |
-| T1.5 | `autoload/audio_manager.gd` | `play_sfx(sfx_name)`, `play_bgm(bgm_name)` | 方法可被调用（可以是空实现） |
-| T1.6 | `resources/characters/character_data.gd` | `CharacterData` extends Resource: `id`, `name`, `portrait_path`, `rarity`, `base_stats`, `skill_ids` | 能在编辑器创建 `character_data_*.tres` |
-| T1.7 | `scripts/character/character_instance.gd` | `CharacterInstance` class: `character_data`, `current_hp`, `experience`, `is_alive`, `current_slot_index`; **运行时状态单独维护，不修改 Resource 模板** | `CharacterInstance.new(character_data)` 可创建实例 |
-| T1.8 | `resources/monsters/monster_data.gd` | `MonsterData` extends Resource: `id`, `name`, `position`, `base_stats`, `skill_ids`, `drop_gold`, `emergency_skill_id` (保命技能ID，数值策划可配置) | 能在编辑器创建怪物 `.tres` |
+| T1.1 | `autoload/game_manager.gd` | 游戏状态 `game_state`，场景切换 `change_scene()`，金币 `gold`，队伍 `party`，**`current_battle_setup` (战斗上下文，供 BattleSystem 拉取)** | - [x] `Engine.get_singleton("GameManager")` 可获取实例 |
+| T1.2 | `autoload/signal_manager.gd` | 全局跨系统信号: `battle_won`, `battle_lost`, `gold_changed`, `building_interacted`; **注意**: `health_changed` 等高频、仅战斗 UI 关心的信号**放在 BattleSystem 节点上**，不由 SignalManager 转发 | - [x] 其他脚本可连接这些信号 |
+| T1.3 | `autoload/debug_manager.gd` | F1=跳转战斗, F2=满血, F3=+1000金 | - [x] 调试模式下按 F1-F3 有响应 |
+| T1.4 | `autoload/effects_manager.gd` | `screen_shake(intensity, duration)`, `show_damage_number(value, position, is_critical)` | - [x] 方法可被调用（可以是空实现） |
+| T1.5 | `autoload/audio_manager.gd` | `play_sfx(sfx_name)`, `play_bgm(bgm_name)` | - [x] 方法可被调用（可以是空实现） |
+| T1.6 | `resources/characters/character_data.gd` | `CharacterData` extends Resource: `id`, `name`, `portrait_path`, `rarity`, `base_stats`, `skill_ids` | - [x] 能在编辑器创建 `character_data_*.tres` |
+| T1.7 | `scripts/character/character_instance.gd` | `CharacterInstance` class: `character_data`, `current_hp`, `experience`, `is_alive`, `current_slot_index`; **运行时状态单独维护，不修改 Resource 模板** | - [x] `CharacterInstance.new(character_data)` 可创建实例 |
+| T1.8 | `resources/monsters/monster_data.gd` | `MonsterData` extends Resource: `id`, `name`, `position`, `base_stats`, `skill_ids`, `drop_gold`, `emergency_skill_id` (保命技能ID，数值策划可配置) | - [x] 能在编辑器创建怪物 `.tres` |
 
 ---
 
