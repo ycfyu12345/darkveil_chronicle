@@ -15,9 +15,9 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T0.1 | `project.godot` | 创建项目，锁定 1280x720，`stretch_mode = "canvas_items"`；在项目设置的 Input Map 中添加 `debug_battle` (F1), `debug_full_heal` (F2), `debug_gold` (F3) | Godot 编辑器能打开项目，无警告；F1-F3 在调试模式下有响应 |
-| T0.2 | 目录结构 | 创建 `autoload/`, `scripts/`, `scenes/`, `resources/`, `assets/` 等目录 | 所有目录存在 |
-| T0.3 | `assets/` | 创建占位美术资源：白底黑字 `placeholder_portrait.png` (128x128)，区分角色/怪物/建筑 | `.tres` 中的 `portrait_path` 可正常加载不报错 |
+| T0.1 | `project.godot` | 创建项目，锁定 1280x720，`stretch_mode = "canvas_items"`；在项目设置的 Input Map 中添加 `debug_battle` (F1), `debug_full_heal` (F2), `debug_gold` (F3) | - [x] Godot 编辑器能打开项目，无警告；F1-F3 在调试模式下有响应 |
+| T0.2 | 目录结构 | 创建 `autoload/`, `scripts/`, `scenes/`, `resources/`, `assets/` 等目录 | - [x] 所有目录存在 |
+| T0.3 | `assets/` | 创建占位美术资源：白底黑字 `placeholder_portrait.png` (128x128)，区分角色/怪物/建筑 | - [x] `.tres` 中的 `portrait_path` 可正常加载不报错 |
 
 ---
 
