@@ -1,0 +1,7 @@
+[gd_resource type="Image" format=3]
+
+[resource]
+width = 128
+height = 128
+format = "RGBA8"
+data = PackedByteArray(255, 255, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 0, 0, 0, 255)
