@@ -16,9 +16,14 @@ func _ready() -> void:
 	_create_enemy_ui()
 	_create_command_buttons()
 
+## 清除容器所有子节点
+func _clear_container(container: Container) -> void:
+	for child in container.get_children():
+		child.queue_free()
+
 ## 创建队伍UI占位符
 func _create_team_ui() -> void:
-	team_panel.clear_children()
+	_clear_container(team_panel)
 	# 占位：3个角色卡片
 	for i in range(3):
 		var card = _create_unit_card("角色 " + str(i + 1), 100, 100)
@@ -26,7 +31,7 @@ func _create_team_ui() -> void:
 
 ## 创建敌人UI占位符
 func _create_enemy_ui() -> void:
-	enemy_panel.clear_children()
+	_clear_container(enemy_panel)
 	# 占位：3个怪物卡片
 	for i in range(3):
 		var card = _create_unit_card("怪物 " + str(i + 1), 50, 50)
@@ -60,7 +65,7 @@ func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
 
 ## 创建命令按钮
 func _create_command_buttons() -> void:
-	command_panel.clear_children()
+	_clear_container(command_panel)
 
 	var attack_btn = Button.new()
 	attack_btn.text = "攻击"
