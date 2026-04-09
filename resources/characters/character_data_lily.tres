@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/characters/character_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "character_data_lily"
+name = "Lily"
+portrait_path = "res://resources/characters/placeholder_portrait.tres"
+rarity = 2
+base_stats/HP = 80
+base_stats/ATK = 8
+base_stats/DEF = 8
+base_stats/SPD = 8
+base_stats/Magic = 20
+skill_ids = ["skill_heal", "skill_attack"]

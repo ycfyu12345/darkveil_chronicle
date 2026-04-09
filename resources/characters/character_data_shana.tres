@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/characters/character_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "character_data_shana"
+name = "Shana"
+portrait_path = "res://resources/characters/placeholder_portrait.tres"
+rarity = 3
+base_stats/HP = 180
+base_stats/ATK = 15
+base_stats/DEF = 25
+base_stats/SPD = 3
+base_stats/Magic = 5
+skill_ids = ["skill_attack", "skill_defend"]

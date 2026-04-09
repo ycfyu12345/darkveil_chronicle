@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monsters/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "monster_data_goblin"
+name = "Goblin"
+position = 0
+base_stats/HP = 50
+base_stats/ATK = 12
+base_stats/DEF = 5
+base_stats/SPD = 6
+skill_ids = ["skill_attack"]
+drop_gold = 20
+emergency_skill_id = ""

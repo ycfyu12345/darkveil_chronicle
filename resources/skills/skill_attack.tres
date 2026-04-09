@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/skill_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "skill_attack"
+name = "攻击"
+icon_path = ""
+description = "普通攻击"
+is_ultimate = false
+max_uses = -1
+target_type = 0
+target_position = 0
+effects = []
+skill_weights = {}

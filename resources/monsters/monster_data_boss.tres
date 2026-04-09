@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monsters/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "monster_data_boss"
+name = "Darkveil Boss"
+position = 0
+base_stats/HP = 200
+base_stats/ATK = 20
+base_stats/DEF = 15
+base_stats/SPD = 3
+skill_ids = ["skill_attack", "skill_ultimate_attack"]
+drop_gold = 100
+emergency_skill_id = ""

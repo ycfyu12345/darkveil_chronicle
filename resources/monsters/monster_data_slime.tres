@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monsters/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "monster_data_slime"
+name = "Slime"
+position = 0
+base_stats/HP = 30
+base_stats/ATK = 8
+base_stats/DEF = 2
+base_stats/SPD = 4
+skill_ids = ["skill_attack"]
+drop_gold = 10
+emergency_skill_id = ""

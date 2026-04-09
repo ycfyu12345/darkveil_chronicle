@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/skill_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "skill_ultimate_attack"
+name = "终极攻击"
+icon_path = ""
+description = "造成大量伤害"
+is_ultimate = true
+max_uses = 1
+target_type = 1
+target_position = 0
+effects = []
+skill_weights = {}
