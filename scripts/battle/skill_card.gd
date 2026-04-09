@@ -29,6 +29,12 @@ enum TargetPosition {
 @export var effects: Array[Effect.Effect] = []
 @export var skill_weights: Dictionary = {}  # 权重配置
 
+## 简化的效果属性（用于 .tres 文件序列化）
+## 0 = DAMAGE, 1 = DAMAGE_BUFF, 2 = HEAL, 3 = DEBUFF
+@export var effect_type: int = 0  # Effect.EffectType
+@export var effect_base_value: int = 0
+@export var effect_multiplier: float = 1.0
+
 ## 获取效果列表
 func get_effects() -> Array[Effect.Effect]:
 	return effects

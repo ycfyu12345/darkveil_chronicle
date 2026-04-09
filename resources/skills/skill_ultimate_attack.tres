@@ -14,3 +14,6 @@ target_type = 1
 target_position = 0
 effects = []
 skill_weights = {}
+effect_type = 0
+effect_base_value = 60
+effect_multiplier = 1.5

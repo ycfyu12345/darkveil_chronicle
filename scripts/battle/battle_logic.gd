@@ -13,11 +13,14 @@ signal battle_ended(victory: bool)
 ## attacker: 攻击方 (CharacterInstance 或 MonsterData)
 ## defender: 防守方 (CharacterInstance)
 ## multiplier: 伤害倍率
-func calculate_damage(attacker, defender, multiplier: float = 1.0) -> int:
+## skill: 技能卡片（可选，用于获取 effect_base_value）
+func calculate_damage(attacker, defender, multiplier: float = 1.0, skill: SkillCard = null) -> int:
 	var base_damage: int = 0
 
-	# 获取攻击方攻击力
-	if attacker is CharacterInstance:
+	# 优先使用技能的效果基础值
+	if skill != null and skill.effect_base_value > 0:
+		base_damage = skill.effect_base_value
+	elif attacker is CharacterInstance:
 		base_damage = attacker.get_attack()
 	elif attacker is MonsterData:
 		base_damage = attacker.base_attack

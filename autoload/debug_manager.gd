@@ -45,5 +45,5 @@ func _start_debug_battle() -> void:
 func _full_heal_party() -> void:
 	for member in GameManager.party:
 		if member and member.is_alive:
-			member.current_hp = member.character_data.base_stats.hp
+			member.current_hp = member.get_max_hp()
 			print("[DebugManager] Healed ", member.character_data.name)
