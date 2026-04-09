@@ -13,4 +13,4 @@ base_defense = 2
 base_speed = 4
 skill_ids = ["skill_attack"]
 drop_gold = 10
-emergency_skill_id = ""
+emergency_skill_id = "skill_attack"

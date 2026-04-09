@@ -40,7 +40,38 @@ func check_position_validity(skill: SkillCard, target_position: int, current_pos
 func apply_death_and_fill(dead_unit, all_units: Array) -> void:
 	if dead_unit is CharacterInstance:
 		dead_unit.is_alive = false
-		# current_slot_index 保持不变，用于UI显示死亡状态
+
+		# 触发补位逻辑：后排前移填补前排空位
+		_rearrange_after_death(all_units)
+
+## 死亡后重新排列站位
+## 前排死亡时，后排单位前移填补空位
+func _rearrange_after_death(all_units: Array) -> void:
+	var front_positions = [0, 1]
+	var back_positions = [2, 3]
+
+	# 收集前排存活和后排存活的单位
+	var front_alive: Array = []
+	var back_alive: Array = []
+
+	for unit in all_units:
+		if unit is CharacterInstance and unit.is_alive:
+			if unit.current_slot_index in front_positions:
+				front_alive.append(unit)
+			elif unit.current_slot_index in back_positions:
+				back_alive.append(unit)
+
+	# 如果前排有空位，后排前移
+	for i in range(front_positions.size()):
+		var pos = front_positions[i]
+		# 找到这个位置是否为空（没有存活单位）
+		var has_unit = front_alive.any(func(u): return u.current_slot_index == pos)
+		if not has_unit and not back_alive.is_empty():
+			# 后排最前的单位填补前排空位
+			var moving_unit = back_alive.pop_front()
+			moving_unit.current_slot_index = pos
+			print("[PositionSystem] Unit ", moving_unit.character_data.name,
+				  " moved from back to front slot ", pos)
 
 ## 重新排列站位
 ## 根据 current_slot_index 更新显示位置
