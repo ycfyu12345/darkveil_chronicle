@@ -69,40 +69,52 @@ func update_enemy_units(enemy_units: Array) -> void:
 
 ## 创建单位卡片占位符
 func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
-	var panel = PanelContainer.new()
-	panel.set_custom_minimum_size(Vector2(150, 80))
+	# 使用 MarginContainer 作为根容器来设置背景
+	var margin = MarginContainer.new()
+	margin.set_custom_minimum_size(Vector2(150, 80))
+	margin.add_theme_constant_override("margin_left", 5)
+	margin.add_theme_constant_override("margin_right", 5)
+	margin.add_theme_constant_override("margin_top", 5)
+	margin.add_theme_constant_override("margin_bottom", 5)
 
-	# 添加背景颜色使面板可见
-	var color_rect = ColorRect.new()
-	color_rect.color = Color(0.2, 0.2, 0.25, 0.8)  # 深灰色背景
-	color_rect.set_custom_minimum_size(Vector2(150, 80))
-	panel.add_child(color_rect)
+	# 背景Panel
+	var bg = Panel.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0.2, 0.2, 0.25, 0.9)
+	margin.add_child(bg)
 
+	# 内容容器
 	var vbox = VBoxContainer.new()
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	panel.add_child(vbox)
+	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	margin.add_child(vbox)
 
 	var name_label = Label.new()
 	name_label.text = name
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	name_label.set_custom_minimum_size(Vector2(130, 20))
+	name_label.set_custom_minimum_size(Vector2(140, 25))
+	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	name_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(name_label)
 
 	var hp_label = Label.new()
 	hp_label.text = str(current_hp) + " / " + str(max_hp) + " HP"
 	hp_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hp_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	hp_label.set_custom_minimum_size(Vector2(130, 20))
+	hp_label.set_custom_minimum_size(Vector2(140, 25))
+	hp_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hp_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(hp_label)
 
 	var progress = ProgressBar.new()
 	progress.max_value = max_hp
 	progress.value = current_hp
-	progress.set_custom_minimum_size(Vector2(130, 10))
+	progress.set_custom_minimum_size(Vector2(140, 15))
+	progress.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	progress.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(progress)
 
-	return panel
+	return margin
 
 ## 创建命令按钮
 func _create_command_buttons() -> void:
