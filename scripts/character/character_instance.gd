@@ -11,7 +11,7 @@ var current_slot_index: int = 0
 
 func _init(data: CharacterData) -> void:
 	character_data = data
-	current_hp = data.base_stats.hp
+	current_hp = data.base_hp
 	is_alive = current_hp > 0
 
 ## 获取当前HP
@@ -20,7 +20,7 @@ func get_current_hp() -> int:
 
 ## 获取最大HP
 func get_max_hp() -> int:
-	return character_data.base_stats.hp
+	return character_data.base_hp
 
 ## 受到伤害
 func take_damage(amount: int) -> void:
@@ -36,13 +36,13 @@ func heal(amount: int) -> void:
 
 ## 获取属性
 func get_attack() -> int:
-	return character_data.base_stats.attack
+	return character_data.base_attack
 
 func get_defense() -> int:
-	return character_data.base_stats.defense
+	return character_data.base_defense
 
 func get_speed() -> int:
-	return character_data.base_stats.speed
+	return character_data.base_speed
 
 func get_magic() -> int:
-	return character_data.base_stats.magic
+	return character_data.base_magic

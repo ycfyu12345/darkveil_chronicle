@@ -19,6 +19,11 @@ var current_gold: int = 100
 
 func _ready() -> void:
 	print("[TownManager] Town initialized")
+
+	# 如果队伍为空，初始化默认队伍
+	if GameManager.party.is_empty():
+		_init_default_party()
+
 	current_gold = GameManager.gold
 	_update_gold_display()
 
@@ -30,6 +35,31 @@ func _ready() -> void:
 	hospital_btn.pressed.connect(_on_hospital_pressed)
 	quest_btn.pressed.connect(_on_quest_pressed)
 	dungeon_btn.pressed.connect(_on_dungeon_pressed)
+
+## 初始化默认队伍
+func _init_default_party() -> void:
+	print("[TownManager] Initializing default party...")
+
+	# 加载角色数据
+	var alice_data = load("res://resources/characters/character_data_alice.tres")
+	var lily_data = load("res://resources/characters/character_data_lily.tres")
+	var shana_data = load("res://resources/characters/character_data_shana.tres")
+
+	# 创建角色实例
+	var alice = CharacterInstance.new(alice_data)
+	var lily = CharacterInstance.new(lily_data)
+	var shana = CharacterInstance.new(shana_data)
+
+	# 设置位置
+	alice.current_slot_index = 0
+	lily.current_slot_index = 1
+	shana.current_slot_index = 2
+
+	# 添加到队伍
+	GameManager.party = [alice, lily, shana]
+	GameManager.init_party(GameManager.party)
+
+	print("[TownManager] Default party created: ", GameManager.party.size(), " members")
 
 ## 与建筑交互
 func interact_with_building(building_type: BuildingType) -> void:

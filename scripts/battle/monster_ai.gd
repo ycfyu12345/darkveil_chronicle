@@ -30,8 +30,8 @@ func _check_emergency(monster) -> bool:
 	var max_hp: int = 0
 
 	if monster is MonsterData:
-		current_hp = monster.current_hp if "current_hp" in monster else monster.base_stats.hp
-		max_hp = monster.base_stats.hp
+		current_hp = monster.get("current_hp", monster.base_hp)
+		max_hp = monster.base_hp
 	elif monster is Dictionary:
 		current_hp = monster.get("current_hp", 0)
 		max_hp = monster.get("max_hp", 1)

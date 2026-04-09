@@ -20,7 +20,7 @@ func calculate_damage(attacker, defender, multiplier: float = 1.0) -> int:
 	if attacker is CharacterInstance:
 		base_damage = attacker.get_attack()
 	elif attacker is MonsterData:
-		base_damage = attacker.base_stats.attack
+		base_damage = attacker.base_attack
 	else:
 		push_warning("[BattleLogic] Unknown attacker type")
 		return 0
@@ -85,7 +85,7 @@ func _get_unit_speed(unit) -> int:
 	if unit is CharacterInstance:
 		return unit.get_speed()
 	elif unit is MonsterData:
-		return unit.base_stats.speed
+		return unit.base_speed
 	elif unit.has("speed"):
 		return unit.speed
 	return 0

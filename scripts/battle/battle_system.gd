@@ -67,8 +67,8 @@ func _pull_battle_setup() -> void:
 func _create_runtime_monster(monster_data: MonsterData) -> Dictionary:
 	return {
 		"data": monster_data,
-		"current_hp": monster_data.base_stats.hp,
-		"max_hp": monster_data.base_stats.hp,
+		"current_hp": monster_data.base_hp,
+		"max_hp": monster_data.base_hp,
 		"is_alive": true,
 		"current_slot_index": monster_data.position,
 	}
