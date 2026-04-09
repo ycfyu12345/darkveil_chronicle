@@ -69,18 +69,14 @@ func update_enemy_units(enemy_units: Array) -> void:
 
 ## 创建单位卡片占位符
 func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
-	# 使用 MarginContainer 作为根容器来设置背景
+	# 使用 MarginContainer 作为根容器
 	var margin = MarginContainer.new()
 	margin.set_custom_minimum_size(Vector2(150, 80))
-	margin.add_theme_constant_override("margin_left", 5)
-	margin.add_theme_constant_override("margin_right", 5)
-	margin.add_theme_constant_override("margin_top", 5)
-	margin.add_theme_constant_override("margin_bottom", 5)
 
-	# 背景Panel
-	var bg = Panel.new()
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	# 背景用 ColorRect
+	var bg = ColorRect.new()
 	bg.color = Color(0.2, 0.2, 0.25, 0.9)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	margin.add_child(bg)
 
 	# 内容容器
