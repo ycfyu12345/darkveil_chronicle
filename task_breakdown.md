@@ -86,9 +86,9 @@
 
 | 任务ID | 文件 | 操作 | 验证 |
 |--------|------|------|------|
-| T6.1 | `resources/characters/` | 创建 3 个角色: `character_data_alice.tres` (输出: ATK=30, SPD=10), `character_data_lily.tres` (治疗: HP=80, SPD=8), `character_data_shana.tres` (坦克: HP=180, DEF=25, SPD=3) | `load()` 可加载 |
-| T6.2 | `resources/monsters/` | 创建怪物: `monster_data_slime.tres` (HP=30, ATK=8, SPD=4), `monster_data_goblin.tres` (HP=50, ATK=12, SPD=6), `monster_data_boss.tres` (HP=200, ATK=20, SPD=3) | `load()` 可加载 |
-| T6.3 | `resources/skills/` | 创建技能: 普通 `skill_attack.tres`, `skill_heal.tres` (uses=-1 每回合恢复); 大招 `skill_ultimate_attack.tres` (is_ultimate=true, uses=1) | `load()` 可加载 |
+| T6.1 | `resources/characters/` | 创建 3 个角色: `character_data_alice.tres` (输出: ATK=30, SPD=10), `character_data_lily.tres` (治疗: HP=80, SPD=8), `character_data_shana.tres` (坦克: HP=180, DEF=25, SPD=3) | - [x] `load()` 可加载 |
+| T6.2 | `resources/monsters/` | 创建怪物: `monster_data_slime.tres` (HP=30, ATK=8, SPD=4), `monster_data_goblin.tres` (HP=50, ATK=12, SPD=6), `monster_data_boss.tres` (HP=200, ATK=20, SPD=3) | - [x] `load()` 可加载 |
+| T6.3 | `resources/skills/` | 创建技能: 普通 `skill_attack.tres`, `skill_heal.tres` (uses=-1 每回合恢复); 大招 `skill_ultimate_attack.tres` (is_ultimate=true, uses=1) | - [x] `load()` 可加载 |
 
 ---
 
