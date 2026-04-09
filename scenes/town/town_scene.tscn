@@ -12,12 +12,9 @@ anchor_bottom = 1.0
 color = Color(0.2, 0.2, 0.25, 1)
 
 [node name="Title" type="Label" parent="." unique_id=1359192457]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
+offset_left = 540.0
 offset_top = 80.0
-offset_right = 100.0
+offset_right = 740.0
 offset_bottom = 130.0
 text = "Darkveil Chronicle"
 horizontal_alignment = 1
@@ -46,6 +43,6 @@ text = "地牢入口"
 [node name="GoldLabel" type="Label" parent="." unique_id=1040665231]
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 120.0
+offset_right = 150.0
 offset_bottom = 50.0
 text = "Gold: 100"
