@@ -53,10 +53,10 @@ func update_enemy_units(enemy_units: Array) -> void:
 		# enemy 应该是 Dictionary 类型的运行时怪物对象
 		if enemy is Dictionary:
 			var data = enemy.get("data", null)
-			if data:
+			if data != null:
 				var hp = enemy.get("current_hp", 0)
 				var max_hp = enemy.get("max_hp", 0)
-				var name = data.name if "name" in data else "Unknown"
+				var name = data.name
 				var card = _create_unit_card(name, hp, max_hp)
 				enemy_panel.add_child(card)
 
