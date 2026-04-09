@@ -2,7 +2,7 @@ extends Node2D
 
 ## 城镇系统管理器
 
-@onready var gold_label: Label = $PlayerHUD/GoldLabel
+@onready var gold_label: Label = $GoldLabel
 @onready var hospital_btn: Button = $BuildingList/HospitalButton
 @onready var quest_btn: Button = $BuildingList/QuestBoardButton
 @onready var dungeon_btn: Button = $BuildingList/DungeonEntranceButton
