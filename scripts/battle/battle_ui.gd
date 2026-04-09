@@ -72,6 +72,12 @@ func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
 	var panel = PanelContainer.new()
 	panel.set_custom_minimum_size(Vector2(150, 80))
 
+	# 添加背景颜色使面板可见
+	var color_rect = ColorRect.new()
+	color_rect.color = Color(0.2, 0.2, 0.25, 0.8)  # 深灰色背景
+	color_rect.set_custom_minimum_size(Vector2(150, 80))
+	panel.add_child(color_rect)
+
 	var vbox = VBoxContainer.new()
 	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
 	panel.add_child(vbox)
