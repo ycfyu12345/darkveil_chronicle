@@ -66,16 +66,21 @@ func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
 	panel.set_custom_minimum_size(Vector2(150, 80))
 
 	var vbox = VBoxContainer.new()
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
 	panel.add_child(vbox)
 
 	var name_label = Label.new()
 	name_label.text = name
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	name_label.set_custom_minimum_size(Vector2(130, 20))
 	vbox.add_child(name_label)
 
 	var hp_label = Label.new()
 	hp_label.text = str(current_hp) + " / " + str(max_hp) + " HP"
 	hp_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hp_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	hp_label.set_custom_minimum_size(Vector2(130, 20))
 	vbox.add_child(hp_label)
 
 	var progress = ProgressBar.new()
