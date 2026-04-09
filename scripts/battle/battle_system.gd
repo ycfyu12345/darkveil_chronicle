@@ -78,8 +78,18 @@ func _start_battle() -> void:
 	print("[BattleSystem] Battle starting...")
 	current_turn = 1
 	_initialize_skill_uses()
+
+	# 更新战斗UI显示
+	_update_battle_ui()
+
 	state_machine.transition_to(BattleStateMachine.BattleState.PLAYER_INPUT)
 	_print_battle_state()
+
+## 更新战斗UI
+func _update_battle_ui() -> void:
+	if battle_ui:
+		battle_ui.update_team_units(player_units)
+		battle_ui.update_enemy_units(enemy_units)
 
 ## 初始化技能使用次数
 func _initialize_skill_uses() -> void:

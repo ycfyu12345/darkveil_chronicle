@@ -12,25 +12,30 @@ extends Node2D
 
 func _ready() -> void:
 	print("[BattleUI] Placeholder UI ready")
-	_create_team_ui()
-	_create_enemy_ui()
 	_create_command_buttons()
 
-## 创建队伍UI占位符
-func _create_team_ui() -> void:
+## 根据队伍数据更新UI（供 BattleSystem 调用）
+func update_team_units(player_units: Array) -> void:
 	team_panel.clear_children()
-	# 占位：3个角色卡片
-	for i in range(3):
-		var card = _create_unit_card("角色 " + str(i + 1), 100, 100)
-		team_panel.add_child(card)
+	for unit in player_units:
+		if unit is CharacterInstance:
+			var hp = unit.current_hp
+			var max_hp = unit.get_max_hp()
+			var name = unit.character_data.name
+			var card = _create_unit_card(name, hp, max_hp)
+			team_panel.add_child(card)
 
-## 创建敌人UI占位符
-func _create_enemy_ui() -> void:
+## 根据敌人数据更新UI（供 BattleSystem 调用）
+func update_enemy_units(enemy_units: Array) -> void:
 	enemy_panel.clear_children()
-	# 占位：3个怪物卡片
-	for i in range(3):
-		var card = _create_unit_card("怪物 " + str(i + 1), 50, 50)
-		enemy_panel.add_child(card)
+	for enemy in enemy_units:
+		var data = enemy.get("data", null)
+		if data:
+			var hp = enemy.get("current_hp", 0)
+			var max_hp = enemy.get("max_hp", 0)
+			var name = data.name
+			var card = _create_unit_card(name, hp, max_hp)
+			enemy_panel.add_child(card)
 
 ## 创建单位卡片占位符
 func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
