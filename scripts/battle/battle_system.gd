@@ -338,7 +338,7 @@ func _print_battle_state() -> void:
 		if enemy is Dictionary:
 			if enemy.get("is_alive", false):
 				var data = enemy.get("data", null)
-				var name = "?" if data == null else data.get("name", "?")
+				var name = "?" if data == null else data.name
 				print("  - ", name, ": ", enemy.get("current_hp", 0), "/", enemy.get("max_hp", 0), " HP")
 		else:
 			print("  - [Unknown enemy type: ", typeof(enemy), "]")
