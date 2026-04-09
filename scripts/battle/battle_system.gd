@@ -198,6 +198,7 @@ func _check_deaths() -> void:
 	if all_dead:
 		print("[BattleSystem] All player units dead - DEFEAT")
 		battle_logic.battle_ended.emit(false)
+		SignalManager.battle_lost.emit()
 		state_machine.transition_to(BattleStateMachine.BattleState.BATTLE_OVER)
 		return
 
