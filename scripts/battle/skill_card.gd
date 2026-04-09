@@ -15,7 +15,7 @@ enum TargetPosition {
 	ANY,       # 任意位置
 	FRONT,     # 前排
 	BACK,      # 后排
-	}
+}
 
 ## 技能卡片数据模板
 @export var id: String = ""
@@ -26,7 +26,7 @@ enum TargetPosition {
 @export var max_uses: int = -1  # -1 表示每回合恢复
 @export var target_type: TargetType = TargetType.SINGLE
 @export var target_position: TargetPosition = TargetPosition.ANY
-@export var effects: Array[Effect.Effect] = []
+@export var effects: Array = []  # Effect.Effect 数组
 @export var skill_weights: Dictionary = {}  # 权重配置
 
 ## 简化的效果属性（用于 .tres 文件序列化）
@@ -36,7 +36,7 @@ enum TargetPosition {
 @export var effect_multiplier: float = 1.0
 
 ## 获取效果列表
-func get_effects() -> Array[Effect.Effect]:
+func get_effects() -> Array:
 	return effects
 
 ## 检查是否有多目标效果
