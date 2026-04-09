@@ -59,8 +59,15 @@ func _pull_battle_setup() -> void:
 
 	# 加载怪物
 	for monster_data in setup.monster_party:
-		var runtime_monster = _create_runtime_monster(monster_data)
-		enemy_units.append(runtime_monster)
+		# 确保是 MonsterData 类型
+		if monster_data is MonsterData:
+			var runtime_monster = _create_runtime_monster(monster_data)
+			enemy_units.append(runtime_monster)
+		elif monster_data is Dictionary and monster_data.has("data"):
+			# 已经是运行时格式的怪物对象
+			enemy_units.append(monster_data)
+		else:
+			push_warning("[BattleSystem] Unknown monster data type: ", typeof(monster_data))
 	print("[BattleSystem] Enemy units: ", enemy_units.size())
 
 ## 创建运行时怪物对象
@@ -327,6 +334,12 @@ func _print_battle_state() -> void:
 		print("  - ", unit.character_data.name, ": ", unit.current_hp, "/", unit.get_max_hp(), " HP")
 	print("Enemy units: ", enemy_units.size())
 	for enemy in enemy_units:
-		if enemy.get("is_alive", false):
-			print("  - ", enemy.get("data", {}).get("name", "?"), ": ", enemy.get("current_hp", 0), "/", enemy.get("max_hp", 0), " HP")
+		# enemy 应该是 Dictionary 类型的运行时怪物对象
+		if enemy is Dictionary:
+			if enemy.get("is_alive", false):
+				var data = enemy.get("data", null)
+				var name = "?" if data == null else data.get("name", "?")
+				print("  - ", name, ": ", enemy.get("current_hp", 0), "/", enemy.get("max_hp", 0), " HP")
+		else:
+			print("  - [Unknown enemy type: ", typeof(enemy), "]")
 	print("===================")
