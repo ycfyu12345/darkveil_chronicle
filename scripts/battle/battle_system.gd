@@ -94,9 +94,13 @@ func _start_battle() -> void:
 
 ## 更新战斗UI
 func _update_battle_ui() -> void:
+	print("[BattleSystem] _update_battle_ui called, battle_ui: ", battle_ui)
 	if battle_ui:
+		print("[BattleSystem] Calling update_team_units...")
 		battle_ui.update_team_units(player_units)
 		battle_ui.update_enemy_units(enemy_units)
+	else:
+		print("[BattleSystem] ERROR: battle_ui is null!")
 
 ## 初始化技能使用次数
 func _initialize_skill_uses() -> void:
