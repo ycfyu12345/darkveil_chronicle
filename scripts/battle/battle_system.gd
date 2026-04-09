@@ -9,7 +9,7 @@ var monster_ai: MonsterAI
 var position_system: PositionSystem
 
 ## 战斗单位
-var player_units: Array[CharacterInstance] = []
+var player_units: Array = []  # CharacterInstance 数组
 var enemy_units: Array = []  # 运行时怪物对象
 
 ## 行动队列
