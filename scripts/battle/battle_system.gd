@@ -107,8 +107,9 @@ func _on_state_changed(state: BattleStateMachine.BattleState) -> void:
 ## 玩家输入处理
 func _handle_player_input() -> void:
 	print("[BattleSystem] Awaiting player input...")
-	# 验证所有技能可用性
-	_validate_all_skills()
+	# 验证所有技能可用性并通知 UI
+	var validation_result = _validate_all_skills()
+	_update_ui_skill_buttons(validation_result)
 
 ## 验证所有技能的可用性
 ## 返回: Dictionary {skill_id: bool} true=可用, false=不可用
@@ -153,6 +154,11 @@ func _validate_all_skills() -> Dictionary:
 ## 获取技能验证结果（供UI调用）
 func get_skill_validation() -> Dictionary:
 	return _validate_all_skills()
+
+## 更新UI技能按钮状态
+func _update_ui_skill_buttons(validation_result: Dictionary) -> void:
+	if battle_ui and battle_ui.has_method("update_skill_buttons"):
+		battle_ui.update_skill_buttons(validation_result)
 
 ## 添加行动到队列
 func queue_action(unit, skill: SkillCard, target_position: int) -> void:
