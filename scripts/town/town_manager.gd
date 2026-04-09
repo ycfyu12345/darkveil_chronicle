@@ -3,9 +3,9 @@ extends Node2D
 ## 城镇系统管理器
 
 @onready var gold_label: Label = $GoldLabel
-@onready var hospital_btn: Button = $BuildingList/HospitalButton
-@onready var quest_btn: Button = $BuildingList/QuestBoardButton
-@onready var dungeon_btn: Button = $BuildingList/DungeonEntranceButton
+@onready var hospital_btn: Button = $VBox/HospitalButton
+@onready var quest_btn: Button = $VBox/QuestBoardButton
+@onready var dungeon_btn: Button = $VBox/DungeonEntranceButton
 
 ## 建筑类型枚举
 enum BuildingType {
