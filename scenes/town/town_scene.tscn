@@ -12,21 +12,18 @@ anchor_bottom = 1.0
 color = Color(0.2, 0.2, 0.25, 1)
 
 [node name="Title" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
+offset_left = 490.0
 offset_top = 80.0
-offset_right = 100.0
+offset_right = 790.0
 offset_bottom = 130.0
 text = "Darkveil Chronicle"
 horizontal_alignment = 1
 
 [node name="BuildingList" type="VBoxContainer" parent="."]
 offset_left = 540.0
-offset_top = 300.0
+offset_top = 280.0
 offset_right = 740.0
-offset_bottom = 500.0
+offset_bottom = 480.0
 
 [node name="HospitalButton" type="Button" parent="BuildingList"]
 custom_minimum_size = Vector2(200, 50)
