@@ -195,10 +195,65 @@ func _get_expected_action_count() -> int:
 ## 执行行动队列
 func _execute_actions() -> void:
 	print("[BattleSystem] Executing action queue...")
+
+	if action_queue.is_empty():
+		print("[BattleSystem] No actions in queue, skipping to death check")
+		state_machine.transition_to(BattleStateMachine.BattleState.DEATH_CHECK)
+		return
+
+	# 按行动顺序执行（实际上队列已经是按速度排序的）
+	for action in action_queue:
+		var unit = action["unit"]
+		var skill = action["skill"]
+		var target_pos = action["target_position"]
+
+		# 获取目标
+		var target = _get_target_at_position(target_pos, unit)
+
+		if target == null:
+			print("[BattleSystem] No valid target at position ", target_pos)
+			continue
+
+		# 计算伤害
+		var damage = battle_logic.calculate_damage(unit, target, skill.effect_multiplier, skill)
+		var is_critical = randf() < 0.1  # 10% 暴击率
+
+		if is_critical:
+			damage = int(damage * 1.5)
+
+		# 应用伤害
+		battle_logic.apply_damage(target, damage, is_critical)
+
+		# 播放伤害特效
+		EffectsManager.show_damage_number(damage, Vector2(640, 360), is_critical)
+
+		# 如果目标死亡，应用死亡逻辑
+		if target is CharacterInstance and not target.is_alive:
+			position_system.apply_death_and_fill(target, player_units)
+		elif target is Dictionary and not target.get("is_alive", true):
+			target["is_alive"] = false
+
+		# 模拟动画延迟
+		await get_tree().create_timer(0.5).timeout
+
+	# 清空行动队列
 	action_queue.clear()
-	# TODO: 按行动顺序执行，使用 await 等待动画
 
 	state_machine.transition_to(BattleStateMachine.BattleState.DEATH_CHECK)
+
+## 根据位置获取目标
+func _get_target_at_position(target_pos: int, attacker) -> Variant:
+	# 如果攻击者是玩家单位，目标在 enemy_units
+	if attacker is CharacterInstance:
+		for enemy in enemy_units:
+			if enemy.get("current_slot_index", 0) == target_pos and enemy.get("is_alive", false):
+				return enemy
+	# 如果攻击者是怪物，目标在 player_units
+	elif attacker is Dictionary:
+		for unit in player_units:
+			if unit.current_slot_index == target_pos and unit.is_alive:
+				return unit
+	return null
 
 ## 死亡检查
 func _check_deaths() -> void:
