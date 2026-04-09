@@ -11,6 +11,7 @@ extends Control
 @onready var battle_log: RichTextLabel = $BattleLog
 
 func _ready() -> void:
+	print("[BattleUI] _ready called, TeamPanel: ", team_panel, ", EnemyPanel: ", enemy_panel)
 	print("[BattleUI] Placeholder UI ready")
 	_create_command_buttons()
 
@@ -37,17 +38,21 @@ func _create_enemy_ui() -> void:
 
 ## 根据队伍数据更新UI（供 BattleSystem 调用）
 func update_team_units(player_units: Array) -> void:
+	print("[BattleUI] update_team_units called with ", player_units.size(), " units")
 	_clear_container(team_panel)
 	for unit in player_units:
 		if unit is CharacterInstance:
 			var hp = unit.current_hp
 			var max_hp = unit.get_max_hp()
 			var name = unit.character_data.name
+			print("[BattleUI] Creating card for: ", name, " HP: ", hp, "/", max_hp)
 			var card = _create_unit_card(name, hp, max_hp)
 			team_panel.add_child(card)
+	print("[BattleUI] Team panel now has ", team_panel.get_child_count(), " children")
 
 ## 根据敌人数据更新UI（供 BattleSystem 调用）
 func update_enemy_units(enemy_units: Array) -> void:
+	print("[BattleUI] update_enemy_units called with ", enemy_units.size(), " enemies")
 	_clear_container(enemy_panel)
 	for enemy in enemy_units:
 		# enemy 应该是 Dictionary 类型的运行时怪物对象
@@ -57,8 +62,10 @@ func update_enemy_units(enemy_units: Array) -> void:
 				var hp = enemy.get("current_hp", 0)
 				var max_hp = enemy.get("max_hp", 0)
 				var name = data.name
+				print("[BattleUI] Creating enemy card for: ", name, " HP: ", hp, "/", max_hp)
 				var card = _create_unit_card(name, hp, max_hp)
 				enemy_panel.add_child(card)
+	print("[BattleUI] Enemy panel now has ", enemy_panel.get_child_count(), " children")
 
 ## 创建单位卡片占位符
 func _create_unit_card(name: String, current_hp: int, max_hp: int) -> Control:
