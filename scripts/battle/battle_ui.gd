@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 ## 战斗UI灰盒占位符
 ## 白底黑字显示角色名、HP，按钮可点击
